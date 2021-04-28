@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        imagename = "jekanik/projectForDiplom"
+        imagename = "jekanik/projectfordiplom"
         registryCredential = 'git'
         dockerImage = ''
         CLASS           = "GitSCM"
@@ -30,9 +30,9 @@ pipeline {
         }
        stage("Prepare build image") {
             steps {
-                sh "docker build -f Dockerfile . -t jekanik/projectForDiplom:${BUILD_ID}"
+                sh "docker build -f Dockerfile . -t jekanik/projectfordiplom:${BUILD_ID}"
                 sh "docker login -u jekanik -p${password}"
-                sh "docker push jekanik/projectForDiplom:${BUILD_ID}"
+                sh "docker push jekanik/projectfordiplom:${BUILD_ID}"
             }
         }      
         
