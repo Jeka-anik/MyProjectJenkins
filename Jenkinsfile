@@ -30,9 +30,9 @@ pipeline {
         }
        stage("Prepare build image") {
             steps {
-                sh "docker build -f Dockerfile . -t jekanik/project-build:${BUILD_ID}"
+                sh "docker build -f Dockerfile . -t jekanik/projectForDiplom:${BUILD_ID}"
                 sh "docker login -u jekanik -p${password}"
-                sh "docker push jekanik/project-build:${BUILD_ID}"
+                sh "docker push jekanik/projectForDiplom:${BUILD_ID}"
             }
         }      
         
