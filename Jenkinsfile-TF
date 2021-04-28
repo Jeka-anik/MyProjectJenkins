@@ -10,6 +10,10 @@ pipeline {
      environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        CLASS           = "GitSCM"
+        BRANCH          = "main"
+        GIT_CREDENTIALS = "Jeka-anik"
+        GIT_URL         = "git@github.com:Jeka-anik/MyProjectIaaS.git"
     }
 
    agent  any
@@ -32,6 +36,18 @@ pipeline {
         //            }
         //        }
         //    }
+          stage('Checkout SCM') {
+            steps {
+                checkout([
+                    $class: "${CLASS}",
+                    branches: [[name: "${BRANCH}"]],
+                    userRemoteConfigs: [[
+                        url: "${GIT_URL}",
+                        credentialsId: "${GIT_CREDENTIALS}",
+                    ]]
+                ])
+            }
+        }
         stage('Init') {
             steps {
                 sh 'terraform init -input=true'
