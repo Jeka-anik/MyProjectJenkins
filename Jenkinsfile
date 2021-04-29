@@ -35,6 +35,10 @@ pipeline {
                 sh "docker push jekanik/projectfordiplom:${BUILD_ID}"
             }
         }      
-        
+       stage("Ansible") {
+            steps {
+                ansiblePlaybook credentialsId: 'd2413b3b-07e6-4a40-842b-f15e1d6ed3e5', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'playbook.yml'
+            }
+        }              
     }
 }
