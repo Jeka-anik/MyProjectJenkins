@@ -43,13 +43,13 @@ pipeline {
                 sh 'terraform init -input=false'
                   }
         }
-        stage('Create workspace') {
-            steps {
-                //sh 'terraform init -input=false'
-                //sh 'terraform workspace new ${environment}'
-                sh 'pwd; terraform workspace select ${environment}'
-            }
-        }
+ //      stage('Create workspace') {
+ //           steps {
+ //               //sh 'terraform init -input=false'
+ //               //sh 'terraform workspace new ${environment}'
+ //               sh 'pwd; terraform workspace select ${environment}'
+ //           }
+ //       }
         stage('Plan') {
             steps {
                 //sh 'terraform init -input=false'
