@@ -85,9 +85,10 @@ pipeline {
            }
        }
 
-        stage('Apply') {
+        stage('Apply/destroy') {
             steps {
-                sh "pwd; terraform apply -input=false tfplan"
+               // sh "pwd; terraform apply -input=false tfplan"
+                sh "pwd; terraform destroy"
             }
         }
         stage('S3Copy step') {
