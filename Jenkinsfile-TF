@@ -26,16 +26,6 @@ pipeline {
     //            ansiColor('xterm')
     //        }
     stages {
-        //stage('checkout') {
-        //    steps {
-         //        script{
-        //                dir("terraform")
-        //                {
-        //                    git "https://github.com/Jeka-anik/ForJenkins.git"
-        //                }
-        //            }
-        //        }
-        //    }
           stage('Checkout SCM') {
             steps {
                 checkout([
@@ -87,8 +77,8 @@ pipeline {
 
         stage('Apply/destroy') {
             steps {
-               // sh "pwd; terraform apply -input=false tfplan"
-                sh "pwd; terraform destroy -auto-approve"
+                sh "pwd; terraform apply -input=false tfplan"
+                // sh "pwd; terraform destroy -auto-approve"
             }
         }
         stage('S3Copy step') {
