@@ -88,7 +88,7 @@ pipeline {
         stage('Apply/destroy') {
             steps {
                // sh "pwd; terraform apply -input=false tfplan"
-                sh "pwd; terraform destroy"
+                sh "pwd; terraform destroy -auto-approve"
             }
         }
         stage('S3Copy step') {
