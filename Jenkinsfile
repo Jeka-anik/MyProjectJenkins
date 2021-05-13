@@ -38,12 +38,11 @@ pipeline {
        stage("run ec2.py") {
             steps {
                 sh "chmod +x ec2.py"
-                sh "ec2.py --list"
             }
         } 
        stage("Ansible") {
             steps {
-                ansiblePlaybook colorized: true, credentialsId: 'd2413b3b-07e6-4a40-842b-f15e1d6ed3e5', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'deploy.yml'
+                ansiblePlaybook colorized: true, credentialsId: 'd2413b3b-07e6-4a40-842b-f15e1d6ed3e5', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ec2.py', playbook: 'deploy.yml'
             }
         }              
     }
