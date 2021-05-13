@@ -43,8 +43,8 @@ pipeline {
                 sh "chmod +x ec2.py"
                 sh "pwd"
                 sh "./ec2.py --list"
-                sh "ansible -i ec2.py all -m ping"
-                sh "ansible-playbook -i ec2.py deploy.yml"
+               // sh "ansible -i ec2.py all -m ping"
+                //sh "ansible-playbook -i ec2.py deploy.yml"
             }
         } 
        stage("Ansible") {
