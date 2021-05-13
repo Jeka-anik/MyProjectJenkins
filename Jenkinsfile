@@ -9,6 +9,9 @@ pipeline {
         BRANCH          = "main"
         GIT_CREDENTIALS = "git-hubsshkey"
         GIT_URL         = "git@github.com:Jeka-anik/MyProjectCode.git"
+        
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
     stages {
         stage('Hello') {
