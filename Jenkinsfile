@@ -38,7 +38,7 @@ pipeline {
        stage("run ec2.py") {
             steps {
                 sh "chmod +x ec2.py"
-                sh "./ec2.py --list"
+                sh "ec2.py --list"
             }
         } 
        stage("Ansible") {
