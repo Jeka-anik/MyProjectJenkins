@@ -43,13 +43,13 @@ pipeline {
                 sh "chmod +x ec2.py"
                 sh "pwd"
                 sh "./ec2.py --list"
-                sh "ansible -i ec2.py all -m ping"
+                //sh "ansible -i ec2.py all -m ping"
                 //sh "ansible-playbook -i ec2.py deploy.yml"
             }
         } 
        stage("Ansible") {
             steps {
-               ansiblePlaybook becomeUser: 'root', credentialsId: 'hw41', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ec2.py', playbook: 'deploy.yml'
+               ansiblePlaybook becomeUser: 'ubuntu', credentialsId: 'hw41', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ec2.py', playbook: 'deploy.yml'
             }              
        }
     }
