@@ -26,7 +26,7 @@ pipeline {
     //            ansiColor('xterm')
     //        }
     stages {
-           stage('Hello') {
+           stage('Notification on Slack Start') {
             steps {
                 slackSend channel: '#testforevgen', message: 'Job Start', blocks: [
                     [
@@ -108,5 +108,25 @@ pipeline {
                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'my.bucket.for.upload.jenkins47', excludedFile: 'Jenkinsfile', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '*/', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'Jenkins', userMetadata: [] 
       }
     }
+      stage('Notification on Slack Finish') {
+            steps {
+                slackSend channel: '#testforevgen', message: 'Job Finish', blocks: [
+                    [
+                      "type": "section",
+                      "text": [
+                        "type": "mrkdwn",
+                        "text": "*Подняли, какие молодцы*"
+                      ]
+                    ],
+                    [
+                      "type": "section",
+                      "text": [
+                        "type": "mrkdwn",
+                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG"
+                      ]
+                     ]
+                    ]
+               }
+             }
    }
   }
