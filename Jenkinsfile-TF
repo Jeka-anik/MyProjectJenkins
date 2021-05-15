@@ -26,6 +26,28 @@ pipeline {
     //            ansiColor('xterm')
     //        }
     stages {
+           stage('Hello') {
+            steps {
+                slackSend channel: '#testforevgen', message: 'Job Start', blocks: [
+                    [
+                      "type": "section",
+                      "text": [
+                        "type": "mrkdwn",
+                        "text": "*Поднимаем Инфраструктуру*"
+                      ]
+                    ],
+                    [
+                      "type": "section",
+                      "text": [
+                        "type": "mrkdwn",
+                        "text": "This Job up Load Balancer, Target Group, create Launch Template and ASG"
+                      ]
+                     ]
+                    ]
+               }
+             }
+    
+    
           stage('Checkout SCM') {
             steps {
                 checkout([
