@@ -110,7 +110,9 @@ pipeline {
         
        stage("AWS DNS name") {
             steps {
-               sh "aws elb describe-load-balancers --load-balancer-name weblb"
+               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'hw41.pem', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                AWS("--region=eu-west-1 s3 ls")
+              }
             }              
           }
        stage('Notification on Slack finish Job') {
