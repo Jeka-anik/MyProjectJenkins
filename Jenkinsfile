@@ -107,7 +107,13 @@ pipeline {
                ansiblePlaybook become: true, becomeUser: 'root', credentialsId: 'hw41', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ec2.py', playbook: 'deploy.yml'
             }              
           }
-        stage('Notification on Slack finish Job') {
+        
+       stage("AWS DNS name") {
+            steps {
+               sh "aws elb describe-load-balancers --load-balancer-name my-load-balancer"
+            }              
+          }
+       stage('Notification on Slack finish Job') {
             steps {
                 slackSend channel: '#testforevgen', message: 'Job finish', blocks: [
                     [
