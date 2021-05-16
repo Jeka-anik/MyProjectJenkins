@@ -110,7 +110,7 @@ pipeline {
         
        stage("AWS DNS name") {
             steps {
-               sh "aws elb describe-load-balancers --load-balancer-name my-load-balancer"
+               sh "aws elb describe-load-balancers --load-balancer-name weblb"
             }              
           }
        stage('Notification on Slack finish Job') {
