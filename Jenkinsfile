@@ -110,7 +110,7 @@ pipeline {
         
        stage("AWS DNS name") {
             steps {
-               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'hw41', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                 AWS("--region=us-east-1 elb describe-load-balancers --load-balancer-name weblb")
               }
             }              
