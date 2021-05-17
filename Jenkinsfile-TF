@@ -64,10 +64,12 @@ pipeline {
         stage('Build Setup') {
           try {
            echo 'Did this work?'
-           } catch {
+           } 
+           catch {
            echo 'This did not work!'
            currentBuild.result = 'FAILED'
-           } finally {
+           } 
+           finally {
            if (currentBuild.result != 'FAILED') {
            echo 'This did work!'
           }
