@@ -62,18 +62,14 @@ pipeline {
             }
         }
         stage('Init') {
-          try{
-                sh 'terraform init -input=false'
-                slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file " ] ] ]
+            try {
+                    sh 'terraform init -input=false'
+                    slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file " ] ] ]
                 } catch {
-                currentBuild.result = 'FAILED'
-                slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file failture " ] ] ]
-               } finally {
-                if (currentBuild.result != 'FAILED') {
-                echo 'This did work!'
-                 }
-              }
-            }
+                    currentBuild.result = 'FAILED'
+                    slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file failture " ] ] ]
+               } 
+           }
  //      stage('Create workspace') {
  //           steps {
  //               //sh 'terraform init -input=false'
