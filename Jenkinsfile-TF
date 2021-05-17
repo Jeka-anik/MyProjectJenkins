@@ -64,7 +64,7 @@ pipeline {
         stage('Init') {
             try {
                     sh 'terraform init -input=false'
-                    slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file " ] ] ]
+                    slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file " ] ] 
                 } catch {
                     currentBuild.result = 'FAILED'
                     slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file failture " ] ] ]
