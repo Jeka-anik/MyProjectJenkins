@@ -63,16 +63,9 @@ pipeline {
         }
         stage('Init') {
             steps {
-              script {
-                   try {
-                     sh 'terraform init -input=false'
-                  } catch (err) {
-                     echo 'This did not work!'
-                     currentBuild.result = 'FAILED'
-                     }
+                sh 'terraform init -input=false'
                   }
-                }
-              }
+        }
  //      stage('Create workspace') {
  //           steps {
  //               //sh 'terraform init -input=false'
