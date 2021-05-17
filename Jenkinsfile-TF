@@ -14,7 +14,7 @@ pipeline {
         BRANCH          = "main"
         GIT_CREDENTIALS = "git-hubsshkey"
         GIT_URL         = "git@github.com:Jeka-anik/MyProjectIaaS.git"
-        var1            = "$sh(script:'cat dns.txt')"
+        var1            = "$sh(script:'echo < cat dns.txt')"
     }
 
    agent  any
