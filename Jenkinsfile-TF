@@ -79,7 +79,7 @@ pipeline {
             try {
                     sh 'terraform init -input=false'
                     slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ [ "type": "section", "text": [ "type": "mrkdwn", "text": "*Поднимаем Инфраструктуру*" ] ], [ "type": "section", "text": [ "type": "mrkdwn", "text": "This Job up Load Balancer, Target Group, create Launch Template and ASG" ] ] ]
-                } catch {
+                } catch (err) {
                     currentBuild.result = 'FAILED'
                     slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file failture " ] ] ]
                } 
