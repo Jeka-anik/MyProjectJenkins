@@ -28,7 +28,7 @@ pipeline {
     stages {
            stage('Notification on Slack Start') {
             steps {
-                slackSend channel: '#testforevgen', message: 'Job Start', blocks: [
+                 slackSend channel: '#testforevgen', message: 'Job Start', blocks: [
                     [
                       "type": "section",
                       "text": [
@@ -101,6 +101,8 @@ pipeline {
             steps {
                 sh "pwd; terraform apply -input=false tfplan"
                 //sh "pwd; terraform destroy -auto-approve"
+                sh "pwd; var='cat dns.txt'"
+                sh "echo $var"
             }
         }
         stage('S3Copy step') {
@@ -122,7 +124,7 @@ pipeline {
                       "type": "section",
                       "text": [
                         "type": "mrkdwn",
-                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG"
+                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG ${var}"
                       ]
                      ]
                     ]
