@@ -73,8 +73,9 @@ pipeline {
                } finally {
                 if (currentBuild.result != 'FAILED') {
                 echo 'This did work!'
-       }
-      }
+                 }
+              }
+          }
  //      stage('Create workspace') {
  //           steps {
  //               //sh 'terraform init -input=false'
