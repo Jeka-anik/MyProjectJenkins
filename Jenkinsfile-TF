@@ -110,9 +110,9 @@ pipeline {
                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'my.bucket.for.upload.jenkins47', excludedFile: 'Jenkinsfile', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '*/', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'Jenkins', userMetadata: [] 
       }
     }
-    environment {
-      var1            = sh (returnStdout: true, script: 'cat dns.txt').trim()
-    }
+        environment {
+           var1            = sh (returnStdout: true, script: 'cat dns.txt').trim()
+         }
       stage('Notification on Slack Finish') {
             steps {
                 slackSend channel: '#testforevgen', message: 'Job Finish', blocks: [
