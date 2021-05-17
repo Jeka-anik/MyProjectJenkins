@@ -61,6 +61,18 @@ pipeline {
                 ])
             }
         }
+        stage('Build Setup') {
+          try {
+           echo 'Did this work?'
+           } catch {
+           echo 'This did not work!'
+           currentBuild.result = 'FAILED'
+           } finally {
+           if (currentBuild.result != 'FAILED') {
+           echo 'This did work!'
+          }
+        }
+      }
         stage('Init') {
             try {
                     sh 'terraform init -input=false'
