@@ -124,7 +124,7 @@ pipeline {
                       "type": "section",
                       "text": [
                         "type": "mrkdwn",
-                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG ${web_loadbalancer_url}"
+                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG"
                       ] 
                      ]
                     ]
