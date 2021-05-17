@@ -102,8 +102,8 @@ pipeline {
                 sh "pwd; terraform apply -input=false tfplan"
                 //sh "pwd; terraform destroy -auto-approve"
                 sh "ls -al"
-                sh 'value=$(<dns.txt)'
-                sh "echo $value"
+                sh 'var1="weblb-1930884149.us-east-1.elb.amazonaws.com"'
+                sh "echo $var1"
             }
         }
         stage('S3Copy step') {
@@ -125,7 +125,7 @@ pipeline {
                       "type": "section",
                       "text": [
                         "type": "mrkdwn",
-                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG ${env.value}"
+                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG ${env.var1}"
                       ] 
                      ]
                     ]
