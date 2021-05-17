@@ -101,7 +101,7 @@ pipeline {
             steps {
                 sh "pwd; terraform apply -input=false tfplan"
                 //sh "pwd; terraform destroy -auto-approve"
-                sh "pwd; var='cat dns.txt'"
+                sh 'var = \'cat <<dns.txt\''
                 sh "echo $var"
             }
         }
@@ -124,8 +124,8 @@ pipeline {
                       "type": "section",
                       "text": [
                         "type": "mrkdwn",
-                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG ${var}"
-                      ]
+                        "text": "Run Load Balancer, Target Group, create Launch Template and ASG "
+                      ] 
                      ]
                     ]
                }
