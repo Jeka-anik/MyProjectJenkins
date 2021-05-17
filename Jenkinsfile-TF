@@ -63,11 +63,9 @@ pipeline {
         }
         stage('Init') {
           try{
-            steps {
                 sh 'terraform init -input=false'
                 slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file " ] ] ]
-                  }
-             } catch {
+                } catch {
                 currentBuild.result = 'FAILED'
                 slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file failture " ] ] ]
                } finally {
@@ -75,7 +73,7 @@ pipeline {
                 echo 'This did work!'
                  }
               }
-          }
+            }
  //      stage('Create workspace') {
  //           steps {
  //               //sh 'terraform init -input=false'
