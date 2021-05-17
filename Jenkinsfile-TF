@@ -82,7 +82,11 @@ pipeline {
                 } catch (err) {
                     currentBuild.result = 'FAILED'
                     slackSend channel: '#testforevgen', message: 'Job Start', blocks: [ ["type": "section", "text": [ "type": "mrkdwn", "text": "*Init*" ] , [ "type": "section", "text": [ "type": "mrkdwn", "text": "Init TF-file failture " ] ] ]
-               } 
+                }  finally {
+                    if (currentBuild.result != 'FAILED') {
+                    echo 'This did work!'
+                 }
+              }
            }
  //      stage('Create workspace') {
  //           steps {
