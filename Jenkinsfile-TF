@@ -101,7 +101,8 @@ pipeline {
             steps {
                 sh "pwd; terraform apply -input=false tfplan"
                 //sh "pwd; terraform destroy -auto-approve"
-                sh "value=\'cat <<dns.txt\'"
+                sh "ls -al"
+                sh "value=$(<dns.txt)"
                 sh "echo $value"
             }
         }
