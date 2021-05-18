@@ -1,7 +1,6 @@
 pipeline {
 
     parameters {
-        //string(name: 'environment', defaultValue: 'terraform', description: 'Workspace/environment file to use for deployment')
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
 
     }
@@ -14,8 +13,7 @@ pipeline {
         BRANCH          = "main"
         GIT_CREDENTIALS = "git-hubsshkey"
         GIT_URL         = "git@github.com:Jeka-anik/MyProjectIaaS.git"
-        //var1            = sh (returnStdout: true, script: 'cat dns.txt').trim()
-      }
+       }
 
    agent  any
     
